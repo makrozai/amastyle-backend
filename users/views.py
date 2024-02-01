@@ -8,7 +8,6 @@ from rest_framework import status
 from . models import User
 from . serializers import RegisterUserSerializer, MyTokenObtainPairSerializer, UserSerializer
 
-
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_solo_user(request, pk):

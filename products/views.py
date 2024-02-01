@@ -64,6 +64,7 @@ def get_product(request, slug):
 
 
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def create_product(request):
     if request.user.is_staff:
         serializer = ProductSerializer(data=request.data)
@@ -80,6 +81,7 @@ def create_product(request):
 
 
 @api_view(['PUT'])
+@permission_classes([IsAuthenticated])
 def edit_product(request, pk):
     product = Product.objects.get(pk=pk)
     if request.user.is_staff:
@@ -95,6 +97,7 @@ def edit_product(request, pk):
 
 
 @api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
 def delete_product(request, pk):
     product = Product.objects.get(pk=pk)
     if request.user.is_staff:
